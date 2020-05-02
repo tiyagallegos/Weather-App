@@ -6,9 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script defer src="./js/script.js"></script>
-    <title>Weather Forecast</title>
+    <link rel="stylesheet" type="./css" href="style.css">    
+    <title>Weather App</title>
 </head>
 <body>
+    
+    <dl id="timelocation">
+        <dd id="City"></dd>
+        <dt>Location: </dt>
+        <dd id="Time"></dd>
+        <dt>Current Time: </dt>
+    </dl>
+    <h1>Forecast</h1>
+    <dl id="forecast">
+        <dd id="Weater"></dd>
+        <dt>Weather: </dt>
+        <dd id="Description"></dd>
+        <dt>Weather Description: </dt>
+        <dd id="Temperature"></dd>
+        <dt>Temperature: </dt>
+        <dd id="Humidity"></dd>
+        <dt>Humidity: </dt>
+        <dd id="Wind Speed"></dd>
+        <dt>Wind Speed: </dt>
+    </dl> 
+      <img src="https://cdn4.vectorstock.com/i/1000x1000/37/43/sun-and-moon-pattern-vector-5113743.jpg">
+    <dl id="suntimes">
+        <dd id="Sunrise"></dd>
+        <dt>Sunrise Time: </dt>
+        <dd id="Sunset"></dd>
+        <dt>Sunset Time: </dt>
+    </dl>
+    <form>
+        <input type="text" placeholder="Type City">
+        <input type="submit" value="Get Weather">
+    </form>
 
 </body>
 </html>

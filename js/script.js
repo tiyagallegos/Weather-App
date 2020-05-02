@@ -1,5 +1,5 @@
 const promise = $.ajax({
-    url:'api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=c460bebde276b6004c894570e2a429f9'
+    url:'http://api.openweathermap.org/data/2.5/weather?q=riverside&appid=c460bebde276b6004c894570e2a429f9'
 })
 
 promise.then(
@@ -13,12 +13,19 @@ promise.then(
 
 /*----- constants -----*/
 /*----- app's state (variables) -----*/
-let weatherData, userInput
+//let weatherData, userInput
 /*----- cached element references -----*/
 
 const $city = $('city');
-const $state = $('state');
-const $country = $('country');
+const $time = $('time');
+const $weather = $('weather');
+const $description = $('description');
+const $temperature = $('temperature');
+const $humidity = $('humidity');
+const $windSpeed = $('windSpeed');
+const $sunrise = $('sunrise');
+const $sunset = $('sunset');
+const $input = $('input[type="text"]')
 /*----- event listeners -----*/
 
 
