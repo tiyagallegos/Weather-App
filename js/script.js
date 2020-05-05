@@ -27,13 +27,27 @@ const $sunrise = $('sunrise');
 const $sunset = $('sunset');
 const $input = $('input[type="text"]')
 /*----- event listeners -----*/
-
+$('form').on('submit', handleGetData)
 
 /*----- functions -----*/
 
 
+function handleGetData(e) {
+    e.preventDefault();//prevents the default behavior of form submission
+    if($input.val() === "") return; //No data don't run checking to make sure u enter text
 
-
+    userInput = $input.val();
+   $input.val(""); //clear the input
+   $.ajax({
+    url:'http://api.openweathermap.org/data/2.5/weather?q= +user input &appid=c460bebde276b6004c894570e2a429f9=53aa2cd6&t=' + userInput
+}).then(function(data) {
+    weatherData = data;
+    //no have global accesslet movieData is the global managemetn in the stat variable
+    render();
+}, function(error) {
+    console.log(error)  
+});
+}
 
 
 /*----- constants -----*/
