@@ -17,10 +17,10 @@ const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
 /*----- app's state (variables) -----*/
 //let weatherData, userInput
 /*----- cached element references -----*/
-
+const $country = $('#country');
+const $error =('#error');
 const $city = $('#city');
-const $time = $('time');
-const $weather = $('#weather');
+const $feelsLike = $('#feelsLike');
 const $description = $('#description');
 const $temperature = $('#temperature');
 const $humidity = $('#humidity');
@@ -42,6 +42,7 @@ function handleGetData(e) {
 
     
 
+
    $.ajax({
     url: baseUrl + userInput + '&APPID=' + apiKey
     //  url: baseUrl + userInput + text + apiKey
@@ -51,10 +52,12 @@ function handleGetData(e) {
     weatherData = data;
     // is this necessary
 }, function(error) {
-    console.log(error)  
+    console.log(error) 
+    $error.text(JSON.parse(error.responseText).message)
 });
 }
-
+//ask about getting error to read in location? 
+//ask about 2 other parameters
 
 //"coord":{"lon":-116.05,"lat":33.73},
 //   "weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],
@@ -69,22 +72,16 @@ function handleGetData(e) {
 // }
 function render(weatherData) {
     $city.text($input.val().toString());
-    $input.val(""); //clear the input
+    $country.text(weatherData.sys.country);
     $description.text(weatherData.weather[0].description.toString());
-   // $weather.text(weatherData.main('feels_like');
-   $temperature.text(weatherData.weather[0].main.temp);
-
-   $humidity.text(weatherData.humidity);
-    $windSpeed.text(weatherData.weather.speed);
-    //$time.text(weatherData.timezone);
-   
+    $humidity.text(weatherData.main.humidity);
+    $temperature.text(weatherData.main.temp);
+   //join("degress C"); how to I join measuremnt 
+    $feelsLike.text(weatherData.main.feels_like);
+    $windSpeed.text(weatherData.wind.speed);
+    $sunrise.text(weatherData.sys.sunrise);
+    $sunset.text(weatherData.sys.sunset);
     $input.val(); //clear the input
-    
-    $humidity.text(weatherData.humidity);
-    $windSpeed.text(weatherData.weather.speed);
-   // $sunrise.text(weatherData.weather.sys.sunrise);
-    //$sunset.text(weatherData.weather.sys.sunset);
-    
 }
 //let movieData is the global managemetn in the stat variable
 
