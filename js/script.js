@@ -72,12 +72,12 @@ function render(weatherData) {
     $city.text($input.val().toString()); //do I need .toString it works without it so  I'd like to take it out...
     $country.text(weatherData.sys.country);
     $description.text(weatherData.weather[0].description);
-    $humidity.text(weatherData.main.humidity);
-    $temperature.text(weatherData.main.temp);
+    $humidity.text(weatherData.main.humidity + "" + " gm⁻³ ");
+    $temperature.text(weatherData.main.temp + " " + " °F " );
 //.add("°F") //°F
    //join("degress C"); how to I join measuremnt (0°C × 9/5) + 32 = 32°F
-    $feelsLike.text(weatherData.main.feels_like); // °F
-    $windSpeed.text(weatherData.wind.speed); //add mph
+    $feelsLike.text(weatherData.main.feels_like  + "" + " °F " ); // °F
+    $windSpeed.text(weatherData.wind.speed + " " + " mph " ); //add mph
     //$sunrise.text(weatherData.sys.sunrise); //conver to an actual time      
     //$sunset.text(weatherData.sys.sunset);
     $input.val(); //clear the input

@@ -16,3 +16,4 @@ Country, Temperature, Feels like, looks like, humidity, wind speed, sunrise time
 * Insert background image of the city searched
 * Insert image depicting the weather type that changes based on the desciption of the weather
 * Style it so it's visually appealing
+* Pull my error message out of console and into City
