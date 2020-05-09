@@ -68,15 +68,15 @@ function handleGetData(e) {
 //   "timezone":-25200,"id":5387890,"name":"Riverside","cod":200
 // }
 function render(weatherData) {
-    $city.text($input.val().toString());
+    $city.text($input.val().toString()); //do I need .toString it works without it so  I'd like to take it out...
     $country.text(weatherData.sys.country);
-    $description.text(weatherData.weather[0].description.toString());
+    $description.text(weatherData.weather[0].description);
     $humidity.text(weatherData.main.humidity);
     $temperature.text(weatherData.main.temp);
-   //join("degress C"); how to I join measuremnt 
+   //join("degress C"); how to I join measuremnt (0°C × 9/5) + 32 = 32°F
     $feelsLike.text(weatherData.main.feels_like);
-    $windSpeed.text(weatherData.wind.speed);
-    $sunrise.text(weatherData.sys.sunrise);
+    $windSpeed.text(weatherData.wind.speed); //add mph
+    $sunrise.text(weatherData.sys.sunrise); //conver to an actual time
     $sunset.text(weatherData.sys.sunset);
     $input.val(); //clear the input
 }
