@@ -12,8 +12,8 @@ promise.then(
 );
 */
 /*----- constants -----*/
-
-const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?appid=c460bebde276b6004c894570e2a429f9&q=';
+const apiKey = 'c460bebde276b6004c894570e2a429f9'
+const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
 /*----- app's state (variables) -----*/
 //let weatherData, userInput
 /*----- cached element references -----*/
@@ -26,6 +26,7 @@ const $temperature = $('#temperature');
 const $humidity = $('#humidity');
 const $sunrise = $('#sunrise');
 const $sunset = $('#sunset');
+const $windSpeed = $('#windSpeed');
 const $input = $('input[type="text"]')
 /*----- event listeners -----*/
 $('form').on('submit', handleGetData)
@@ -39,8 +40,13 @@ function handleGetData(e) {
 
     userInput = $input.val();
 
+    
+
    $.ajax({
-    url: 'http://api.openweathermap.org/data/2.5/weather?appid=c460bebde276b6004c894570e2a429f9&q=' + userInput
+    url: baseUrl + userInput + '&APPID=' + apiKey
+    //  url: baseUrl + '?apikey=' + apikey + '&t=' + userInput
+    //}).then(function(data) {
+        
 }).then(function(data) {
     render(data); //render the response 
     
@@ -63,17 +69,19 @@ function handleGetData(e) {
 // }
 function render(weatherData) {
     $city.text($input.val().toString());
-
-
     $input.val(""); //clear the input
-    $time.text(weatherData.weather.timezone);
-    $weather.text(weatherData.weather[0].weather) 
-    $description.text(weatherData.weather.main);
+    $description.text(weatherData.weather[0].description.toString());
+    $weather.text(weatherData.weather[0].main.toString())
+    
+    //$time.text(weatherData.timezone);
+   
+    $input.val(); //clear the input
     $temperature.text(weatherData.weather.$temperature);
-    $humidity.text(weatherData.weather.humidity);
+    $humidity.text(weatherData.humidity);
     $windSpeed.text(weatherData.weather.speed);
     $sunrise.text(weatherData.weather.sys.sunrise);
     $sunset.text(weatherData.weather.sys.sunset);
+    
 }
 //let movieData is the global managemetn in the stat variable
 
