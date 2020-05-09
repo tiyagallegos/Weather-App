@@ -12,7 +12,7 @@ promise.then(
 );
 */
 /*----- constants -----*/
-const apiKey = 'c460bebde276b6004c894570e2a429f9'
+const apiKey = 'c460bebde276b6004c894570e2a429f9';
 const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
 /*----- app's state (variables) -----*/
 //let weatherData, userInput
@@ -44,11 +44,11 @@ function handleGetData(e) {
 
    $.ajax({
     url: baseUrl + userInput + '&APPID=' + apiKey
-    //  url: baseUrl + '?apikey=' + apikey + '&t=' + userInput
-    //}).then(function(data) {
+    //  url: baseUrl + userInput + text + apiKey
         
 }).then(function(data) {
     render(data); //render the response 
+    weatherData = data;
     
 }, function(error) {
     console.log(error)  
@@ -71,12 +71,12 @@ function render(weatherData) {
     $city.text($input.val().toString());
     $input.val(""); //clear the input
     $description.text(weatherData.weather[0].description.toString());
-    $weather.text(weatherData.weather[0].main.toString())
-    
+   // $weather.text(weatherData.main('feels_like');
+   $temperature.text(weatherData.temperature);
     //$time.text(weatherData.timezone);
    
     $input.val(); //clear the input
-    $temperature.text(weatherData.weather.$temperature);
+    
     $humidity.text(weatherData.humidity);
     $windSpeed.text(weatherData.weather.speed);
     $sunrise.text(weatherData.weather.sys.sunrise);

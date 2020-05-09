@@ -3,14 +3,21 @@
     margin: 0;
 }
 
-img {
-    border-radius: 50%;
-}
 
 body {
-    background-color: lightblue;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: darkblue;
+    color: whitesmoke;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    min-height: 100vh;
+        
+    }
 
-div {
-    color: black;
-}
+dl {
+    border: 3px double darkblue;
+    padding: 0.5em;
+  }
