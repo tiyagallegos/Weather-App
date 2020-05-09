@@ -4,7 +4,7 @@
 ```bash
 Html, JS, CSS, JQuery
 ```
-## API: [weatherAPI]()
+## API: [weatherAPI](http://api.openweathermap.org)
 
 ## Features: 
 

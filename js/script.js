@@ -12,6 +12,7 @@ promise.then(
 );
 */
 /*----- constants -----*/
+const units = '&units=imperial'
 const apiKey = 'c460bebde276b6004c894570e2a429f9';
 const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
 /*----- app's state (variables) -----*/
@@ -24,8 +25,8 @@ const $feelsLike = $('#feelsLike');
 const $description = $('#description');
 const $temperature = $('#temperature');
 const $humidity = $('#humidity');
-const $sunrise = $('#sunrise');
-const $sunset = $('#sunset');
+//const $sunrise = $('#sunrise');
+//const $sunset = $('#sunset');
 const $windSpeed = $('#windSpeed');
 const $input = $('input[type="text"]')
 /*----- event listeners -----*/
@@ -41,7 +42,7 @@ function handleGetData(e) {
     userInput = $input.val();
 
    $.ajax({
-    url: baseUrl + userInput + '&APPID=' + apiKey
+    url: baseUrl + userInput + '&APPID=' + apiKey + units
     //  url: baseUrl + userInput + text + apiKey
         
 }).then(function(data) {
@@ -73,10 +74,11 @@ function render(weatherData) {
     $description.text(weatherData.weather[0].description);
     $humidity.text(weatherData.main.humidity);
     $temperature.text(weatherData.main.temp);
+//.add("°F") //°F
    //join("degress C"); how to I join measuremnt (0°C × 9/5) + 32 = 32°F
-    $feelsLike.text(weatherData.main.feels_like);
+    $feelsLike.text(weatherData.main.feels_like); // °F
     $windSpeed.text(weatherData.wind.speed); //add mph
-    $sunrise.text(weatherData.sys.sunrise); //conver to an actual time
-    $sunset.text(weatherData.sys.sunset);
+    //$sunrise.text(weatherData.sys.sunrise); //conver to an actual time      
+    //$sunset.text(weatherData.sys.sunset);
     $input.val(); //clear the input
 }
