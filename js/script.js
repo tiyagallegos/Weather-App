@@ -49,7 +49,7 @@ function handleGetData(e) {
 }).then(function(data) {
     render(data); //render the response 
     weatherData = data;
-    
+    // is this necessary
 }, function(error) {
     console.log(error)  
 });
@@ -72,15 +72,18 @@ function render(weatherData) {
     $input.val(""); //clear the input
     $description.text(weatherData.weather[0].description.toString());
    // $weather.text(weatherData.main('feels_like');
-   $temperature.text(weatherData.temperature);
+   $temperature.text(weatherData.weather[0].main.temp);
+
+   $humidity.text(weatherData.humidity);
+    $windSpeed.text(weatherData.weather.speed);
     //$time.text(weatherData.timezone);
    
     $input.val(); //clear the input
     
     $humidity.text(weatherData.humidity);
     $windSpeed.text(weatherData.weather.speed);
-    $sunrise.text(weatherData.weather.sys.sunrise);
-    $sunset.text(weatherData.weather.sys.sunset);
+   // $sunrise.text(weatherData.weather.sys.sunrise);
+    //$sunset.text(weatherData.weather.sys.sunset);
     
 }
 //let movieData is the global managemetn in the stat variable

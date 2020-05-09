@@ -16,8 +16,23 @@ body {
     min-height: 100vh;
         
     }
-
 dl {
-    border: 3px double darkblue;
-    padding: 0.5em;
+    padding: 7em;
+
+}
+
+  dt::after {
+    content: ":";
+  }
+
+  dl {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  dt {
+    width: 44%;
+  }
+  dd {
+    margin-left: auto;
+    width: 55%;
   }
