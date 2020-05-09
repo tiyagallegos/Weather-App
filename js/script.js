@@ -12,6 +12,8 @@ promise.then(
 );
 */
 /*----- constants -----*/
+
+base url
 /*----- app's state (variables) -----*/
 //let weatherData, userInput
 /*----- cached element references -----*/
