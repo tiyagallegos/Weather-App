@@ -13,7 +13,7 @@ promise.then(
 */
 /*----- constants -----*/
 
-base url
+const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?appid=c460bebde276b6004c894570e2a429f9&q=';
 /*----- app's state (variables) -----*/
 //let weatherData, userInput
 /*----- cached element references -----*/
@@ -40,41 +40,16 @@ function handleGetData(e) {
     userInput = $input.val();
    $input.val(""); //clear the input
    $.ajax({
-    url:'http://api.openweathermap.org/data/2.5/weather?q= +user input &appid=c460bebde276b6004c894570e2a429f9=53aa2cd6&t=' + userInput
+    url: baseUrl + userInput
 }).then(function(data) {
-    weatherData = data;
+    render(data); //render the response 
     //no have global accesslet movieData is the global managemetn in the stat variable
-    render();
 }, function(error) {
     console.log(error)  
 });
 }
 
 
-/*----- constants -----*/
-/*----- app's state (variables) -----*/
-//let movieData, userInput;
-
-/*----- cached element references -----*/
-//using $ to tell people I'm using jquery 
-//how to select elements in the dom using jquery
-//STOPPP make sure you selected elements correctly
-//jquery will always return object
-//const $title = $('#title');
- //const $city = $('#city');
-//const $year = $('#year');
-
-//const $rating = $('#rated');
-
-//const $input = $('input[type="text"]')
-//grab the input that has a type = text, CSS, JS or Jquery
-//to get value from input tag
-
-/*----- event listeners -----*/
-//$('form').on('submit', handleGetData)
-//wrapped in $$ so we can attach and event listeener
-//access an element suing jquery, then **.on= how to add event 
-//listener using jquery, lisenteing for submit type of event
 
 
 /*----- functions -----*/
@@ -98,7 +73,18 @@ function handleGetData(event) {
     });
 }
 
-function render() {
+//"coord":{"lon":-116.05,"lat":33.73},
+//   "weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],
+//   "base": "stations",
+//   "main":{"temp":309.78,"feels_like":304.18,"temp_min":304.82,"temp_max":313.15,"pressure":1006,"humidity":8},
+//   "visibility":16093,
+//   "wind":{"speed":4.6,"deg":130},
+//   "clouds":{"all":1},
+//   "dt":1588980772,
+//   "sys":{"type":1,"id":6065,"country":"US","sunrise":1588942102,"sunset":1588991578},
+//   "timezone":-25200,"id":5387890,"name":"Riverside","cod":200
+// }
+function render(weatherData) {
     $time.html(weatherData.timezone);
     $weather.html(weatherData.weather) 
     $description.html(weatherData.main);
