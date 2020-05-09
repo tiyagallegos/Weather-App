@@ -9,7 +9,7 @@ Html, JS, CSS, JQuery
 ## Features: 
 
 This app will provide following paramters for the city you type in:
-Country, Temperature, Feels like, looks like, humidity, wind speed, sunrise time, and sunset time
+Country, Temperature, Feels like, looks like, humidity, and wind speed.
 
 ## Stretch Goals/Future Goals: 
 
