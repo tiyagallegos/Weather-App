@@ -15,7 +15,7 @@ promise.then(
 const apiKey = 'c460bebde276b6004c894570e2a429f9';
 const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
 /*----- app's state (variables) -----*/
-//let weatherData, userInput
+let weatherData, userInput
 /*----- cached element references -----*/
 const $country = $('#country');
 const $error =('#error');
@@ -40,9 +40,6 @@ function handleGetData(e) {
 
     userInput = $input.val();
 
-    
-
-
    $.ajax({
     url: baseUrl + userInput + '&APPID=' + apiKey
     //  url: baseUrl + userInput + text + apiKey
@@ -50,14 +47,14 @@ function handleGetData(e) {
 }).then(function(data) {
     render(data); //render the response 
     weatherData = data;
-    // is this necessary
+    // is this necessary??
 }, function(error) {
     console.log(error) 
     $error.text(JSON.parse(error.responseText).message)
 });
 }
 //ask about getting error to read in location? 
-//ask about 2 other parameters
+//ask about functions to change data into degrees fareignhieth and also time funciton
 
 //"coord":{"lon":-116.05,"lat":33.73},
 //   "weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],
@@ -83,14 +80,3 @@ function render(weatherData) {
     $sunset.text(weatherData.sys.sunset);
     $input.val(); //clear the input
 }
-//let movieData is the global managemetn in the stat variable
-
-//re-factoring=making it fit a certain spec
-//this code will only execute when this function gets called
-//usually have to change some variable names after refactioring. 
-
-
-//making dynamic ajax requests
-//whenever browser sees a form,the form will tell browser to refresh the page
-//defeats purpose of AJAX don't need to refresh the page so turn off default 
-//behavior of the form
