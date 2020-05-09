@@ -1,4 +1,4 @@
-const promise = $.ajax({
+/*const promise = $.ajax({
     url:'http://api.openweathermap.org/data/2.5/weather?q=riverside&appid=c460bebde276b6004c894570e2a429f9'
 })
 
@@ -10,7 +10,7 @@ promise.then(
     console.log('bad request: ', error);
 }
 );
-
+*/
 /*----- constants -----*/
 /*----- app's state (variables) -----*/
 //let weatherData, userInput
@@ -22,7 +22,6 @@ const $weather = $('weather');
 const $description = $('description');
 const $temperature = $('temperature');
 const $humidity = $('humidity');
-const $windSpeed = $('windSpeed');
 const $sunrise = $('sunrise');
 const $sunset = $('sunset');
 const $input = $('input[type="text"]')
@@ -59,16 +58,16 @@ function handleGetData(e) {
 //how to select elements in the dom using jquery
 //STOPPP make sure you selected elements correctly
 //jquery will always return object
-/*const $title = $('#title');
+//const $title = $('#title');
+ //const $city = $('#city');
+//const $year = $('#year');
 
-const $year = $('#year');
+//const $rating = $('#rated');
 
-const $rating = $('#rated');
-
-const $input = $('input[type="text"]')
+//const $input = $('input[type="text"]')
 //grab the input that has a type = text, CSS, JS or Jquery
 //to get value from input tag
-*/
+
 /*----- event listeners -----*/
 //$('form').on('submit', handleGetData)
 //wrapped in $$ so we can attach and event listeener
@@ -78,7 +77,7 @@ const $input = $('input[type="text"]')
 
 /*----- functions -----*/
 
-/*function handleGetData(event) {
+function handleGetData(event) {
     event.preventDefault();//prevents the default behavior of form submission
     if($input.val() === "") return; //No data don't run checking to make sure u enter text
 
@@ -87,9 +86,9 @@ const $input = $('input[type="text"]')
     //assignning userinput to input value connecting with the dom
     //will give the value user gives in input tag
     $.ajax({
-        url:'https://www.omdbapi.com/?apikey=53aa2cd6&t=' + userInput
+        url:'http://api.openweathermap.org/data/2.5/weather?q= +user input &appid=c460bebde276b6004c894570e2a429f9=53aa2cd6&t=' + userInput
     }).then(function(data) {
-        movieData = data;
+        weatherData = data;
         //no have global accesslet movieData is the global managemetn in the stat variable
         render();
     }, function(error) {
@@ -98,9 +97,14 @@ const $input = $('input[type="text"]')
 }
 
 function render() {
-    $title.html(movieData.Title);
-    $year.html(movieData.Year);
-    $rating.html(movieData.Rated);
+    $time.html(weatherData.timezone);
+    $weather.html(weatherData.weather) 
+    $description.html(weatherData.main);
+    $temperature.html(weatherData.main+temp);
+    $humidity.html(weatherData.humidity);
+    $windSpeed.html(weatherData.wind);
+    $sunrise.html(weatherData.sys.sunrise);
+    $sunset.html(weatherData.sys[3]);
 }
 //let movieData is the global managemetn in the stat variable
 
@@ -113,4 +117,3 @@ function render() {
 //whenever browser sees a form,the form will tell browser to refresh the page
 //defeats purpose of AJAX don't need to refresh the page so turn off default 
 //behavior of the form
-*/
