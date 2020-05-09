@@ -18,14 +18,14 @@ const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?appid=c460bebde2
 //let weatherData, userInput
 /*----- cached element references -----*/
 
-const $city = $('city');
+const $city = $('#city');
 const $time = $('time');
-const $weather = $('weather');
-const $description = $('description');
-const $temperature = $('temperature');
-const $humidity = $('humidity');
-const $sunrise = $('sunrise');
-const $sunset = $('sunset');
+const $weather = $('#weather');
+const $description = $('#description');
+const $temperature = $('#temperature');
+const $humidity = $('#humidity');
+const $sunrise = $('#sunrise');
+const $sunset = $('#sunset');
 const $input = $('input[type="text"]')
 /*----- event listeners -----*/
 $('form').on('submit', handleGetData)
@@ -38,40 +38,17 @@ function handleGetData(e) {
     if($input.val() === "") return; //No data don't run checking to make sure u enter text
 
     userInput = $input.val();
-   $input.val(""); //clear the input
+
    $.ajax({
-    url: baseUrl + userInput
+    url: 'http://api.openweathermap.org/data/2.5/weather?appid=c460bebde276b6004c894570e2a429f9&q=' + userInput
 }).then(function(data) {
     render(data); //render the response 
-    //no have global accesslet movieData is the global managemetn in the stat variable
+    
 }, function(error) {
     console.log(error)  
 });
 }
 
-
-
-
-/*----- functions -----*/
-
-function handleGetData(event) {
-    event.preventDefault();//prevents the default behavior of form submission
-    if($input.val() === "") return; //No data don't run checking to make sure u enter text
-
-    userInput = $input.val();
-   $input.val(""); //clear the input
-    //assignning userinput to input value connecting with the dom
-    //will give the value user gives in input tag
-    $.ajax({
-        url:'http://api.openweathermap.org/data/2.5/weather?q= +user input &appid=c460bebde276b6004c894570e2a429f9=53aa2cd6&t=' + userInput
-    }).then(function(data) {
-        weatherData = data;
-        //no have global accesslet movieData is the global managemetn in the stat variable
-        render();
-    }, function(error) {
-        console.log(error)  
-    });
-}
 
 //"coord":{"lon":-116.05,"lat":33.73},
 //   "weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],
@@ -85,14 +62,18 @@ function handleGetData(event) {
 //   "timezone":-25200,"id":5387890,"name":"Riverside","cod":200
 // }
 function render(weatherData) {
-    $time.html(weatherData.timezone);
-    $weather.html(weatherData.weather) 
-    $description.html(weatherData.main);
-    $temperature.html(weatherData.main+temp);
-    $humidity.html(weatherData.humidity);
-    $windSpeed.html(weatherData.wind);
-    $sunrise.html(weatherData.sys.sunrise);
-    $sunset.html(weatherData.sys[3]);
+    $city.text($input.val().toString());
+
+
+    $input.val(""); //clear the input
+    $time.text(weatherData.weather.timezone);
+    $weather.text(weatherData.weather[0].weather) 
+    $description.text(weatherData.weather.main);
+    $temperature.text(weatherData.weather.$temperature);
+    $humidity.text(weatherData.weather.humidity);
+    $windSpeed.text(weatherData.weather.speed);
+    $sunrise.text(weatherData.weather.sys.sunrise);
+    $sunset.text(weatherData.weather.sys.sunset);
 }
 //let movieData is the global managemetn in the stat variable
 

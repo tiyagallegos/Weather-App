@@ -8,5 +8,9 @@ img {
 }
 
 body {
-    background-color: purple;
+    background-color: lightblue;
+}
+
+div {
+    color: black;
 }
